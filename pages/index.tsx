@@ -754,23 +754,6 @@ const ContactSection = () => {
                 </div>
               </div>
 
-              <div className="card">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Response Time</h3>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span className="text-gray-700">General inquiries: 1-2 business days</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                    <span className="text-gray-700">Technical support: 2-3 business days</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                    <span className="text-gray-700">Partnership inquiries: 3-5 business days</span>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
