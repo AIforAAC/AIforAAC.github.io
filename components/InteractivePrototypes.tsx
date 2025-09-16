@@ -644,24 +644,88 @@ const WordToRequestPrototype = () => {
 
 // Main Interactive Prototypes Component
 const InteractivePrototypes = () => {
+  const [activePrototype, setActivePrototype] = useState<'extend' | 'background' | 'word'>('extend')
+
+  const prototypeConfig = {
+    extend: {
+      title: 'Extend Reply',
+      subtitle: 'Transform short inputs into full responses',
+      description: 'Enter a short word or phrase, and get multiple full response suggestions based on conversation context.'
+    },
+    background: {
+      title: 'Reply with Background Info', 
+      subtitle: 'Use personal information for contextual responses',
+      description: 'Store personal information locally to generate contextual responses to common questions.'
+    },
+    word: {
+      title: 'Turn Words into Requests',
+      subtitle: 'Convert single words into polite requests', 
+      description: 'Transform single words into polite, contextually appropriate help requests.'
+    }
+  }
+
+  const currentConfig = prototypeConfig[activePrototype]
+
   return (
     <section id="prototypes" className="section-padding bg-white">
       <div className="container-max">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
               Interactive Prototypes
             </h2>
+            <h3 className="text-2xl font-semibold text-blue-600 mb-4">
+              {currentConfig.title} Feature
+            </h3>
+            <p className="text-lg text-gray-600 mb-2">
+              {currentConfig.subtitle}
+            </p>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              Try these demo widgets to experience how AI can assist AAC communication. 
-              These are client-side demonstrations - no data is sent to external servers.
+              {currentConfig.description}
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-1 gap-8 space-y-8">
-            <ExtendReplyPrototype />
-            <BackgroundInfoPrototype />
-            <WordToRequestPrototype />
+          {/* Prototype Selection Buttons */}
+          <div className="flex justify-center mb-8">
+            <div className="bg-gray-100 p-1 rounded-lg inline-flex">
+              <button
+                onClick={() => setActivePrototype('extend')}
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                  activePrototype === 'extend'
+                    ? 'bg-white text-blue-600 shadow-sm'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                Extend Reply
+              </button>
+              <button
+                onClick={() => setActivePrototype('background')}
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                  activePrototype === 'background'
+                    ? 'bg-white text-green-600 shadow-sm'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                Background Info
+              </button>
+              <button
+                onClick={() => setActivePrototype('word')}
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                  activePrototype === 'word'
+                    ? 'bg-white text-purple-600 shadow-sm'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                Word to Request
+              </button>
+            </div>
+          </div>
+
+          {/* Single Prototype Display */}
+          <div className="max-w-4xl mx-auto">
+            {activePrototype === 'extend' && <ExtendReplyPrototype />}
+            {activePrototype === 'background' && <BackgroundInfoPrototype />}
+            {activePrototype === 'word' && <WordToRequestPrototype />}
           </div>
         </div>
       </div>
