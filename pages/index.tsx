@@ -6,13 +6,16 @@ import InteractivePrototypes from '../components/InteractivePrototypes'
 const AccessibilityControls = () => {
   const [highContrast, setHighContrast] = useState(false)
   const [largeText, setLargeText] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false)
 
   useEffect(() => {
     // Load preferences from localStorage
     const savedHighContrast = localStorage.getItem('highContrast') === 'true'
     const savedLargeText = localStorage.getItem('largeText') === 'true'
+    const savedExpanded = localStorage.getItem('accessibilityExpanded') === 'true'
     setHighContrast(savedHighContrast)
     setLargeText(savedLargeText)
+    setIsExpanded(savedExpanded)
   }, [])
 
   useEffect(() => {
@@ -33,38 +36,63 @@ const AccessibilityControls = () => {
     // Save to localStorage
     localStorage.setItem('highContrast', highContrast.toString())
     localStorage.setItem('largeText', largeText.toString())
-  }, [highContrast, largeText])
+    localStorage.setItem('accessibilityExpanded', isExpanded.toString())
+  }, [highContrast, largeText, isExpanded])
 
   return (
-    <div className="fixed top-4 right-4 z-50 flex flex-col gap-2 p-3 bg-white border border-gray-300 rounded-lg shadow-lg">
-      <h3 className="text-sm font-semibold mb-2">Accessibility</h3>
-      <label className="flex items-center gap-2 text-sm">
-        <input
-          type="checkbox"
-          checked={highContrast}
-          onChange={(e) => setHighContrast(e.target.checked)}
-          className="rounded focus:ring-2 focus:ring-primary-500"
-          aria-describedby="high-contrast-desc"
-        />
-        <span>High Contrast</span>
-      </label>
-      <div id="high-contrast-desc" className="sr-only">
-        Toggle high contrast mode for better visibility
+    <div className="fixed top-4 right-4 z-50 bg-white border border-gray-300 rounded-lg shadow-lg">
+      {/* Header with toggle button */}
+      <div className="flex items-center justify-between p-3">
+        <h3 className="text-sm font-semibold">Accessibility</h3>
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="p-1 rounded hover:bg-gray-100 focus:ring-2 focus:ring-primary-500"
+          aria-expanded={isExpanded}
+          aria-label={isExpanded ? 'Collapse accessibility options' : 'Expand accessibility options'}
+        >
+          <svg 
+            className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
       </div>
       
-      <label className="flex items-center gap-2 text-sm">
-        <input
-          type="checkbox"
-          checked={largeText}
-          onChange={(e) => setLargeText(e.target.checked)}
-          className="rounded focus:ring-2 focus:ring-primary-500"
-          aria-describedby="large-text-desc"
-        />
-        <span>Large Text</span>
-      </label>
-      <div id="large-text-desc" className="sr-only">
-        Increase text size for better readability
-      </div>
+      {/* Collapsible content */}
+      {isExpanded && (
+        <div className="px-3 pb-3 space-y-2 border-t border-gray-200 pt-2">
+          <label className="flex items-center gap-2 text-sm">
+            <input
+              type="checkbox"
+              checked={highContrast}
+              onChange={(e) => setHighContrast(e.target.checked)}
+              className="rounded focus:ring-2 focus:ring-primary-500"
+              aria-describedby="high-contrast-desc"
+            />
+            <span>High Contrast</span>
+          </label>
+          <div id="high-contrast-desc" className="sr-only">
+            Toggle high contrast mode for better visibility
+          </div>
+          
+          <label className="flex items-center gap-2 text-sm">
+            <input
+              type="checkbox"
+              checked={largeText}
+              onChange={(e) => setLargeText(e.target.checked)}
+              className="rounded focus:ring-2 focus:ring-primary-500"
+              aria-describedby="large-text-desc"
+            />
+            <span>Large Text</span>
+          </label>
+          <div id="large-text-desc" className="sr-only">
+            Increase text size for better readability
+          </div>
+        </div>
+      )}
     </div>
   )
 }
@@ -799,7 +827,7 @@ export default function Home() {
         <div className="container-max">
           <div className="text-center">
             <p className="text-base text-gray-400">
-              © 2024 AAC AI Empowerment Project. Building accessible communication technology.
+              © 2025 AAC AI Empowerment Project. Building accessible communication technology.
             </p>
           </div>
         </div>
