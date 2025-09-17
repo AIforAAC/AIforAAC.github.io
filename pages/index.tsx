@@ -503,7 +503,7 @@ const PrototypesPage = () => {
           <div className="max-w-4xl mx-auto mb-12">
             <div className="text-center">
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Interactive Prototypes
+                Demo Interactive Prototypes
               </h1>
               <p className="text-xl text-gray-700 leading-relaxed">
                 Experience our AI-assisted communication tools through these interactive demonstrations. 
@@ -1163,7 +1163,7 @@ const NavigationButtons = ({ setActiveTab }: { setActiveTab: (tab: string) => vo
   const buttons = [
     {
       id: 'prototypes',
-      label: 'Prototypes',
+      label: 'Demo Prototypes',
       gradient: 'from-blue-200 to-purple-300',
       hoverGradient: 'hover:from-blue-300 hover:to-purple-400'
     },
