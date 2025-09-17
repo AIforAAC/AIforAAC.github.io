@@ -23,7 +23,7 @@ const Navigation = ({ activeTab, setActiveTab }: { activeTab: string, setActiveT
           </div>
           
           {/* Navigation Tabs */}
-          <div className="hidden md:block">
+          <div className="hidden md:block mr-4">
             <div className="ml-10 flex items-baseline space-x-4">
               {tabs.map((tab) => (
                 <button
@@ -42,7 +42,7 @@ const Navigation = ({ activeTab, setActiveTab }: { activeTab: string, setActiveT
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden mr-4">
             <button
               onClick={() => setActiveTab('mobile-menu')}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
@@ -1010,7 +1010,7 @@ const ContactSection = () => {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8 mb-12">
+          <div className="grid lg:grid-cols-2 gap-8 mb-12 max-w-4xl mx-auto">
             {/* Resource Boxes */}
             <div className="card hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
               <div className="flex items-center gap-4 mb-4">
@@ -1029,29 +1029,6 @@ const ContactSection = () => {
                 className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors"
               >
                 Browse FAQs
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </a>
-            </div>
-
-            <div className="card hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-green-100 to-green-200 rounded-xl flex items-center justify-center">
-                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900">Documentation & Guides</h3>
-              </div>
-              <p className="text-gray-700 mb-4">
-                Access comprehensive guides, tutorials, and documentation to help you get the most out of AAC AI tools.
-              </p>
-              <a 
-                href="#docs" 
-                className="inline-flex items-center gap-2 text-green-600 hover:text-green-700 font-medium transition-colors"
-              >
-                View Documentation
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
@@ -1082,8 +1059,8 @@ const ContactSection = () => {
             </div>
           </div>
 
-          {/* Contact Form and Direct Contact */}
-          <div className="grid lg:grid-cols-2 gap-8">
+          {/* Contact Form */}
+          <div className="max-w-2xl mx-auto">
             <div className="card">
               <h3 className="text-xl font-semibold text-gray-900 mb-6">Send Us a Message</h3>
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -1173,46 +1150,6 @@ const ContactSection = () => {
               </form>
             </div>
 
-            <div className="space-y-6">
-              <div className="card">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Direct Contact</h3>
-                <div className="space-y-4">
-                  <a 
-                    href="mailto:support@aac-ai-project.org" 
-                    className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors group"
-                  >
-                    <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-200 transition-colors">
-                      <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <div className="font-medium text-gray-900">Email Support</div>
-                      <div className="text-sm text-gray-600">support@aac-ai-project.org</div>
-                    </div>
-                  </a>
-                  
-                  <a 
-                    href="https://github.com/aac-ai-project/discussions" 
-                    className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors group"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <div className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center group-hover:bg-gray-700 transition-colors">
-                      <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <div>
-                      <div className="font-medium text-gray-900">GitHub Discussions</div>
-                      <div className="text-sm text-gray-600">Public Q&A and discussions</div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-
-            </div>
           </div>
         </div>
       </div>
@@ -1228,34 +1165,34 @@ const NavigationButtons = ({ setActiveTab }: { setActiveTab: (tab: string) => vo
       id: 'prototypes',
       label: 'View Prototypes',
       icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
         </svg>
       ),
-      gradient: 'from-blue-500 to-purple-600',
-      hoverGradient: 'hover:from-blue-600 hover:to-purple-700'
+      gradient: 'from-blue-400 to-purple-500',
+      hoverGradient: 'hover:from-blue-500 hover:to-purple-600'
     },
     {
       id: 'publications',
       label: 'Research',
       icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C20.832 18.477 19.246 18 17.5 18c-1.746 0-3.332.477-4.5 1.253" />
         </svg>
       ),
-      gradient: 'from-green-500 to-teal-600',
-      hoverGradient: 'hover:from-green-600 hover:to-teal-700'
+      gradient: 'from-green-400 to-teal-500',
+      hoverGradient: 'hover:from-green-500 hover:to-teal-600'
     },
     {
       id: 'team',
       label: 'Team',
       icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 515.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
         </svg>
       ),
-      gradient: 'from-purple-500 to-pink-600',
-      hoverGradient: 'hover:from-purple-600 hover:to-pink-700'
+      gradient: 'from-purple-400 to-pink-500',
+      hoverGradient: 'hover:from-purple-500 hover:to-pink-600'
     }
   ]
 
@@ -1278,7 +1215,7 @@ const NavigationButtons = ({ setActiveTab }: { setActiveTab: (tab: string) => vo
                 className={`group relative overflow-hidden bg-gradient-to-r ${button.gradient} ${button.hoverGradient} text-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105`}
               >
                 <div className="flex flex-col items-center">
-                  <div className="w-12 h-12 mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-16 h-16 mb-4 group-hover:scale-110 transition-transform duration-300">
                     {button.icon}
                   </div>
                   <h3 className="text-lg font-semibold mb-2">{button.label}</h3>
