@@ -117,7 +117,7 @@ const AccessibilityControls = () => {
   }, [highContrast, largeText, isExpanded])
 
   return (
-    <div className="fixed top-4 right-4 z-50 bg-white border border-gray-300 rounded-lg shadow-lg">
+    <div className="fixed top-4 left-4 z-50 bg-white border border-gray-300 rounded-lg shadow-lg">
       {/* Header with toggle button */}
       <div className="flex items-center justify-between p-3">
         <h3 className="text-sm font-semibold">Accessibility</h3>
@@ -183,7 +183,7 @@ const AboutPage = () => {
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                About AAC AI Project
+                About Us
               </h1>
               <p className="text-xl text-gray-700 leading-relaxed">
                 Empowering AAC users through innovative AI technology while preserving personal voice and user autonomy.
@@ -191,67 +191,100 @@ const AboutPage = () => {
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 mb-12">
-              <div className="card">
-                <h2 className="text-2xl font-semibold text-gray-900 mb-4">Our Mission</h2>
-                <p className="text-gray-700 mb-4">
+              <div className="group relative overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-blue-200">
+                <div className="absolute top-4 right-4 w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4 group-hover:text-blue-700 transition-colors duration-300">Our Mission</h2>
+                <p className="text-gray-700 mb-4 leading-relaxed">
                   To reduce communication effort for AAC users by leveraging modern AI technology, 
                   while ensuring that personal voice, user control, and individual expression remain paramount.
                 </p>
-                <p className="text-gray-700">
+                <p className="text-gray-700 leading-relaxed">
                   We believe that AI should enhance, not replace, the unique communication style of each AAC user.
                 </p>
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-indigo-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
               </div>
 
-              <div className="card">
-                <h2 className="text-2xl font-semibold text-gray-900 mb-4">Our Vision</h2>
-                <p className="text-gray-700 mb-4">
+              <div className="group relative overflow-hidden bg-gradient-to-br from-purple-50 to-pink-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-purple-200">
+                <div className="absolute top-4 right-4 w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                  </svg>
+                </div>
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4 group-hover:text-purple-700 transition-colors duration-300">Our Vision</h2>
+                <p className="text-gray-700 mb-4 leading-relaxed">
                   A world where AAC users can communicate at the speed of thought, with AI assistance that 
                   understands context, preserves personality, and respects user preferences.
                 </p>
-                <p className="text-gray-700">
+                <p className="text-gray-700 leading-relaxed">
                   We envision communication tools that adapt to users, not the other way around.
                 </p>
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-pink-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
               </div>
             </div>
 
-            <div className="card mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-6">Project Goals</h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <h3 className="text-lg font-medium text-gray-900 mb-3">Reduce Communication Effort</h3>
-                  <ul className="space-y-2 text-gray-700">
-                    <li className="flex items-start">
-                      <span className="w-2 h-2 bg-primary-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      Transform short inputs into full responses
+            <div className="group relative overflow-hidden bg-gradient-to-br from-green-50 to-teal-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-green-200 mb-8">
+              <div className="absolute top-4 right-4 w-12 h-12 bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                </svg>
+              </div>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-6 group-hover:text-green-700 transition-colors duration-300">Project Goals</h2>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="space-y-4">
+                  <h3 className="text-lg font-medium text-gray-900 mb-3 flex items-center">
+                    <span className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mr-3">
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                    </span>
+                    Reduce Communication Effort
+                  </h3>
+                  <ul className="space-y-3 text-gray-700">
+                    <li className="flex items-start group/item">
+                      <span className="w-3 h-3 bg-blue-500 rounded-full mt-1.5 mr-3 flex-shrink-0 group-hover/item:scale-125 transition-transform duration-200"></span>
+                      <span className="group-hover/item:text-blue-700 transition-colors duration-200">Transform short inputs into full responses</span>
                     </li>
-                    <li className="flex items-start">
-                      <span className="w-2 h-2 bg-primary-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      Provide context-aware suggestions
+                    <li className="flex items-start group/item">
+                      <span className="w-3 h-3 bg-blue-500 rounded-full mt-1.5 mr-3 flex-shrink-0 group-hover/item:scale-125 transition-transform duration-200"></span>
+                      <span className="group-hover/item:text-blue-700 transition-colors duration-200">Provide context-aware suggestions</span>
                     </li>
-                    <li className="flex items-start">
-                      <span className="w-2 h-2 bg-primary-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      Enable faster message composition
+                    <li className="flex items-start group/item">
+                      <span className="w-3 h-3 bg-blue-500 rounded-full mt-1.5 mr-3 flex-shrink-0 group-hover/item:scale-125 transition-transform duration-200"></span>
+                      <span className="group-hover/item:text-blue-700 transition-colors duration-200">Enable faster message composition</span>
                     </li>
                   </ul>
                 </div>
-                <div>
-                  <h3 className="text-lg font-medium text-gray-900 mb-3">Preserve User Autonomy</h3>
-                  <ul className="space-y-2 text-gray-700">
-                    <li className="flex items-start">
-                      <span className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      Maintain personal communication style
+                <div className="space-y-4">
+                  <h3 className="text-lg font-medium text-gray-900 mb-3 flex items-center">
+                    <span className="w-8 h-8 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mr-3">
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                      </svg>
+                    </span>
+                    Preserve User Autonomy
+                  </h3>
+                  <ul className="space-y-3 text-gray-700">
+                    <li className="flex items-start group/item">
+                      <span className="w-3 h-3 bg-green-500 rounded-full mt-1.5 mr-3 flex-shrink-0 group-hover/item:scale-125 transition-transform duration-200"></span>
+                      <span className="group-hover/item:text-green-700 transition-colors duration-200">Maintain personal communication style</span>
                     </li>
-                    <li className="flex items-start">
-                      <span className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      Ensure all outputs are editable
+                    <li className="flex items-start group/item">
+                      <span className="w-3 h-3 bg-green-500 rounded-full mt-1.5 mr-3 flex-shrink-0 group-hover/item:scale-125 transition-transform duration-200"></span>
+                      <span className="group-hover/item:text-green-700 transition-colors duration-200">Ensure all outputs are editable</span>
                     </li>
-                    <li className="flex items-start">
-                      <span className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      Respect privacy and data control
+                    <li className="flex items-start group/item">
+                      <span className="w-3 h-3 bg-green-500 rounded-full mt-1.5 mr-3 flex-shrink-0 group-hover/item:scale-125 transition-transform duration-200"></span>
+                      <span className="group-hover/item:text-green-700 transition-colors duration-200">Respect privacy and data control</span>
                     </li>
                   </ul>
                 </div>
               </div>
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-green-500 to-teal-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
             </div>
           </div>
         </div>
@@ -396,9 +429,6 @@ const PrototypesPage = () => {
         <div className="container-max">
           <div className="max-w-4xl mx-auto mb-12">
             <div className="text-center">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Interactive Prototypes
-              </h1>
               <p className="text-xl text-gray-700 leading-relaxed">
                 Experience our AI-assisted communication tools through these interactive demonstrations. 
                 All prototypes run locally in your browser - no data is sent to external servers.
@@ -1121,7 +1151,6 @@ const HomePage = () => {
       <HeroSection />
       <ProblemSection />
       <AIHelpSection />
-      <DesignGuidelinesSection />
     </>
   )
 }
