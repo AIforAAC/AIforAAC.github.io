@@ -357,12 +357,12 @@ const TeamPage = () => {
 const PublicationsPage = () => {
   const publications = [
     {
-      title: "Towards Designing Augmentative and Alternative Communication Tools Using LLMs",
-      authors: "Sayantan Pal, Nikhil Murali, Atharva Jadhav, Rohini K. Srihari",
+      title: "Empowering AAC Users: A Systematic Integration of Personal Narratives with Conversational AI",
+      authors: "Sayantan Pal, Souvik Das, Rohini Srihari, Jeff Higginborham, Jenna Bizovi",
       venue: "CustomNLP4U Workshop, ACL 2024",
       year: "2024",
       link: "https://aclanthology.org/2024.customnlp4u-1.2/",
-      summary: "This paper explores the potential of Large Language Models (LLMs) in developing more effective AAC tools. We investigate how modern AI can reduce communication effort while preserving user autonomy and personal voice in augmentative communication systems."
+      summary: "This paper bridges the gap between generic AI outputs and genuine human interactions by integrating advanced Conversational AI with personal narratives. We propose creating a custom conversational dataset centered on AAC user experiences to fine-tune language models, combined with Retrieval-Augmented Generation (RAG) methods for contextually relevant and deeply personal responses."
     },
     {
       title: "Exploring the Design Space of Augmentative and Alternative Communication Tools",
@@ -389,7 +389,7 @@ const PublicationsPage = () => {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Research Publications
+                Previous Research Publications
               </h1>
               <p className="text-xl text-gray-700 leading-relaxed">
                 Our research contributions to the field of AAC and AI-assisted communication.
@@ -1169,8 +1169,8 @@ const NavigationButtons = ({ setActiveTab }: { setActiveTab: (tab: string) => vo
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
         </svg>
       ),
-      gradient: 'from-blue-400 to-purple-500',
-      hoverGradient: 'hover:from-blue-500 hover:to-purple-600'
+      gradient: 'from-blue-200 to-purple-300',
+      hoverGradient: 'hover:from-blue-300 hover:to-purple-400'
     },
     {
       id: 'publications',
@@ -1180,8 +1180,8 @@ const NavigationButtons = ({ setActiveTab }: { setActiveTab: (tab: string) => vo
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C20.832 18.477 19.246 18 17.5 18c-1.746 0-3.332.477-4.5 1.253" />
         </svg>
       ),
-      gradient: 'from-green-400 to-teal-500',
-      hoverGradient: 'hover:from-green-500 hover:to-teal-600'
+      gradient: 'from-green-200 to-teal-300',
+      hoverGradient: 'hover:from-green-300 hover:to-teal-400'
     },
     {
       id: 'team',
@@ -1191,8 +1191,8 @@ const NavigationButtons = ({ setActiveTab }: { setActiveTab: (tab: string) => vo
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 515.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
         </svg>
       ),
-      gradient: 'from-purple-400 to-pink-500',
-      hoverGradient: 'hover:from-purple-500 hover:to-pink-600'
+      gradient: 'from-purple-200 to-pink-300',
+      hoverGradient: 'hover:from-purple-300 hover:to-pink-400'
     }
   ]
 

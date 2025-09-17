@@ -670,8 +670,8 @@ const InteractivePrototypes = () => {
     <section id="prototypes" className="section-padding bg-white">
       <div className="container-max">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h3 className="text-2xl font-semibold text-blue-600 mb-4">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-semibold text-blue-600 mb-3">
               {currentConfig.title} Feature
             </h3>
             <p className="text-lg text-gray-600 mb-2">
@@ -683,7 +683,7 @@ const InteractivePrototypes = () => {
           </div>
 
           {/* Prototype Selection Buttons */}
-          <div className="flex justify-center mb-8">
+          <div className="flex justify-center mb-6">
             <div className="bg-gray-100 p-1 rounded-lg inline-flex">
               <button
                 onClick={() => setActivePrototype('extend')}
