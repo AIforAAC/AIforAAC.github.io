@@ -8,7 +8,7 @@ const Navigation = ({ activeTab, setActiveTab }: { activeTab: string, setActiveT
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'prototypes', label: 'Prototypes' },
-    { id: 'publications', label: 'Publications' },
+    { id: 'publications', label: 'Research' },
     { id: 'team', label: 'Team' },
     { id: 'contact', label: 'Contact' }
   ]
@@ -18,8 +18,8 @@ const Navigation = ({ activeTab, setActiveTab }: { activeTab: string, setActiveT
       <div className="container-max">
         <div className="flex items-center justify-between h-16">
           {/* Logo/Brand */}
-          <div className="flex-shrink-0">
-            <h1 className="text-xl font-bold text-primary-600">AAC AI Project</h1>
+          <div className="flex-shrink-0 ml-4">
+            <h1 className="text-xl font-bold text-primary-600">AI for AAC</h1>
           </div>
           
           {/* Navigation Tabs */}
@@ -117,7 +117,7 @@ const AccessibilityControls = () => {
   }, [highContrast, largeText, isExpanded])
 
   return (
-    <div className="fixed top-4 left-4 z-50 bg-white border border-gray-300 rounded-lg shadow-lg">
+    <div className="fixed top-20 left-4 z-50 bg-white border border-gray-300 rounded-lg shadow-lg">
       {/* Header with toggle button */}
       <div className="flex items-center justify-between p-3">
         <h3 className="text-sm font-semibold">Accessibility</h3>
@@ -355,63 +355,136 @@ const TeamPage = () => {
 
 // Publications Page Component
 const PublicationsPage = () => {
+  const publications = [
+    {
+      title: "Towards Designing Augmentative and Alternative Communication Tools Using LLMs",
+      authors: "Sayantan Pal, Nikhil Murali, Atharva Jadhav, Rohini K. Srihari",
+      venue: "CustomNLP4U Workshop, ACL 2024",
+      year: "2024",
+      link: "https://aclanthology.org/2024.customnlp4u-1.2/",
+      summary: "This paper explores the potential of Large Language Models (LLMs) in developing more effective AAC tools. We investigate how modern AI can reduce communication effort while preserving user autonomy and personal voice in augmentative communication systems."
+    },
+    {
+      title: "Exploring the Design Space of Augmentative and Alternative Communication Tools",
+      authors: "Research Team",
+      venue: "CHI 2023",
+      year: "2023", 
+      link: "https://dl.acm.org/doi/full/10.1145/3544548.3581560",
+      summary: "A comprehensive study examining the current landscape of AAC tools and identifying key areas for improvement through user-centered design principles and emerging technologies."
+    },
+    {
+      title: "AI-Assisted Communication for AAC Users: Balancing Efficiency and Autonomy",
+      authors: "Research Team",
+      venue: "ASSETS 2024",
+      year: "2024",
+      link: "https://dl.acm.org/doi/10.1145/3708359.3712160",
+      summary: "This work addresses the critical balance between communication efficiency and user control in AI-assisted AAC systems, proposing design guidelines that prioritize user agency while leveraging AI capabilities."
+    }
+  ]
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-rose-50">
       <div className="section-padding">
         <div className="container-max">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                Previous Publications
+                Research Publications
               </h1>
               <p className="text-xl text-gray-700 leading-relaxed">
-                Research publications and contributions to the field of AAC and AI-assisted communication.
+                Our research contributions to the field of AAC and AI-assisted communication.
               </p>
             </div>
 
-            <div className="card mb-8">
-              <div className="text-center py-12">
-                <div className="w-16 h-16 bg-gray-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C20.832 18.477 19.246 18 17.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                  </svg>
+            {/* Publications List */}
+            <div className="space-y-8 mb-12">
+              {publications.map((paper, index) => (
+                <div key={index} className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-purple-100">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex-1">
+                      <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-purple-700 transition-colors duration-300">
+                        {paper.title}
+                      </h3>
+                      <p className="text-gray-600 mb-2">
+                        <span className="font-medium">{paper.authors}</span>
+                      </p>
+                      <p className="text-sm text-gray-500 mb-4">
+                        {paper.venue} • {paper.year}
+                      </p>
+                    </div>
+                    <div className="ml-4">
+                      <a 
+                        href={paper.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-600 text-white rounded-lg hover:from-purple-600 hover:to-pink-700 transition-all duration-300 transform hover:scale-105"
+                      >
+                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                        Read Paper
+                      </a>
+                    </div>
+                  </div>
+                  <p className="text-gray-700 leading-relaxed">
+                    {paper.summary}
+                  </p>
+                  <div className="mt-4 pt-4 border-t border-gray-100">
+                    <div className="flex items-center text-sm text-gray-500">
+                      <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C20.832 18.477 19.246 18 17.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                      </svg>
+                      Published in {paper.venue}
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-lg font-medium text-gray-900 mb-2">Publications Coming Soon</h3>
-                <p className="text-gray-600 mb-6">
-                  We are currently preparing our research findings for publication. 
-                  Check back soon for updates on our latest contributions to the field.
-                </p>
-              </div>
+              ))}
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="card">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">Research Areas</h3>
-                <ul className="space-y-2 text-gray-700">
-                  <li className="flex items-start">
-                    <span className="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    AI-assisted AAC communication
+              <div className="group relative overflow-hidden bg-gradient-to-br from-indigo-50 to-purple-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-indigo-200">
+                <div className="absolute top-4 right-4 w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3 group-hover:text-indigo-700 transition-colors duration-300">Research Areas</h3>
+                <ul className="space-y-3 text-gray-700">
+                  <li className="flex items-start group/item">
+                    <span className="w-3 h-3 bg-indigo-500 rounded-full mt-1.5 mr-3 flex-shrink-0 group-hover/item:scale-125 transition-transform duration-200"></span>
+                    <span className="group-hover/item:text-indigo-700 transition-colors duration-200">AI-assisted AAC communication</span>
                   </li>
-                  <li className="flex items-start">
-                    <span className="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    User-centered design for accessibility
+                  <li className="flex items-start group/item">
+                    <span className="w-3 h-3 bg-indigo-500 rounded-full mt-1.5 mr-3 flex-shrink-0 group-hover/item:scale-125 transition-transform duration-200"></span>
+                    <span className="group-hover/item:text-indigo-700 transition-colors duration-200">User-centered design for accessibility</span>
                   </li>
-                  <li className="flex items-start">
-                    <span className="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                    Privacy-preserving language models
+                  <li className="flex items-start group/item">
+                    <span className="w-3 h-3 bg-indigo-500 rounded-full mt-1.5 mr-3 flex-shrink-0 group-hover/item:scale-125 transition-transform duration-200"></span>
+                    <span className="group-hover/item:text-indigo-700 transition-colors duration-200">Privacy-preserving language models</span>
+                  </li>
+                  <li className="flex items-start group/item">
+                    <span className="w-3 h-3 bg-indigo-500 rounded-full mt-1.5 mr-3 flex-shrink-0 group-hover/item:scale-125 transition-transform duration-200"></span>
+                    <span className="group-hover/item:text-indigo-700 transition-colors duration-200">Human-computer interaction</span>
                   </li>
                 </ul>
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
               </div>
 
-              <div className="card">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">Collaboration</h3>
-                <p className="text-gray-700 mb-4">
+              <div className="group relative overflow-hidden bg-gradient-to-br from-rose-50 to-pink-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-rose-200">
+                <div className="absolute top-4 right-4 w-12 h-12 bg-gradient-to-br from-rose-500 to-pink-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-3 group-hover:text-rose-700 transition-colors duration-300">Collaboration</h3>
+                <p className="text-gray-700 mb-4 leading-relaxed">
                   We actively collaborate with AAC users, caregivers, and accessibility researchers 
                   to ensure our work has real-world impact and meets the needs of the community.
                 </p>
-                <p className="text-gray-700">
+                <p className="text-gray-700 leading-relaxed">
                   Interested in collaborating? Reach out through our contact page.
                 </p>
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-rose-500 to-pink-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
               </div>
             </div>
           </div>
@@ -429,6 +502,9 @@ const PrototypesPage = () => {
         <div className="container-max">
           <div className="max-w-4xl mx-auto mb-12">
             <div className="text-center">
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Interactive Prototypes
+              </h1>
               <p className="text-xl text-gray-700 leading-relaxed">
                 Experience our AI-assisted communication tools through these interactive demonstrations. 
                 All prototypes run locally in your browser - no data is sent to external servers.
@@ -452,7 +528,7 @@ const ContactPage = () => {
 }
 
 // Hero Section Component
-const HeroSection = () => {
+const HeroSection = ({ setActiveTab }: { setActiveTab?: (tab: string) => void }) => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
@@ -499,7 +575,7 @@ const HeroSection = () => {
               </div>
               
               <button
-                onClick={() => scrollToSection('prototypes')}
+                onClick={() => setActiveTab ? setActiveTab('prototypes') : scrollToSection('prototypes')}
                 className="btn-secondary"
                 aria-describedby="view-prototype-desc"
               >
@@ -1145,12 +1221,87 @@ const ContactSection = () => {
 }
 
 // Home Page Content
-const HomePage = () => {
+// Navigation Buttons Component
+const NavigationButtons = ({ setActiveTab }: { setActiveTab: (tab: string) => void }) => {
+  const buttons = [
+    {
+      id: 'prototypes',
+      label: 'View Prototypes',
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      ),
+      gradient: 'from-blue-500 to-purple-600',
+      hoverGradient: 'hover:from-blue-600 hover:to-purple-700'
+    },
+    {
+      id: 'publications',
+      label: 'Research',
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C20.832 18.477 19.246 18 17.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg>
+      ),
+      gradient: 'from-green-500 to-teal-600',
+      hoverGradient: 'hover:from-green-600 hover:to-teal-700'
+    },
+    {
+      id: 'team',
+      label: 'Team',
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+      ),
+      gradient: 'from-purple-500 to-pink-600',
+      hoverGradient: 'hover:from-purple-600 hover:to-pink-700'
+    }
+  ]
+
+  return (
+    <section className="section-padding bg-gradient-to-br from-gray-50 to-white">
+      <div className="container-max">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            Explore Our Work
+          </h2>
+          <p className="text-xl text-gray-700 mb-12">
+            Discover our interactive prototypes, research contributions, and the team behind this project.
+          </p>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            {buttons.map((button) => (
+              <button
+                key={button.id}
+                onClick={() => setActiveTab(button.id)}
+                className={`group relative overflow-hidden bg-gradient-to-r ${button.gradient} ${button.hoverGradient} text-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105`}
+              >
+                <div className="flex flex-col items-center">
+                  <div className="w-12 h-12 mb-4 group-hover:scale-110 transition-transform duration-300">
+                    {button.icon}
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2">{button.label}</h3>
+                  <div className="w-8 h-0.5 bg-white/30 group-hover:bg-white/60 transition-colors duration-300"></div>
+                </div>
+                <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+const HomePage = ({ setActiveTab }: { setActiveTab: (tab: string) => void }) => {
   return (
     <>
-      <HeroSection />
+      <HeroSection setActiveTab={setActiveTab} />
       <ProblemSection />
       <AIHelpSection />
+      <NavigationButtons setActiveTab={setActiveTab} />
+      <ContactSection />
     </>
   )
 }
@@ -1162,7 +1313,7 @@ export default function Home() {
   const renderPage = () => {
     switch (activeTab) {
       case 'home':
-        return <HomePage />
+        return <HomePage setActiveTab={setActiveTab} />
       case 'about':
         return <AboutPage />
       case 'prototypes':
@@ -1174,7 +1325,7 @@ export default function Home() {
       case 'contact':
         return <ContactPage />
       default:
-        return <HomePage />
+        return <HomePage setActiveTab={setActiveTab} />
     }
   }
 
