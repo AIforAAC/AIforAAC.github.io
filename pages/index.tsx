@@ -1163,23 +1163,13 @@ const NavigationButtons = ({ setActiveTab }: { setActiveTab: (tab: string) => vo
   const buttons = [
     {
       id: 'prototypes',
-      label: 'View Prototypes',
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-      ),
+      label: 'Prototypes',
       gradient: 'from-blue-200 to-purple-300',
       hoverGradient: 'hover:from-blue-300 hover:to-purple-400'
     },
     {
       id: 'publications',
       label: 'Research',
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C20.832 18.477 19.246 18 17.5 18c-1.746 0-3.332.477-4.5 1.253" />
-        </svg>
-      ),
       gradient: 'from-green-200 to-teal-300',
       hoverGradient: 'hover:from-green-300 hover:to-teal-400'
     },
@@ -1212,14 +1202,10 @@ const NavigationButtons = ({ setActiveTab }: { setActiveTab: (tab: string) => vo
               <button
                 key={button.id}
                 onClick={() => setActiveTab(button.id)}
-                className={`group relative overflow-hidden bg-gradient-to-r ${button.gradient} ${button.hoverGradient} text-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105`}
+                className={`group relative overflow-hidden bg-gradient-to-r ${button.gradient} ${button.hoverGradient} text-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105`}
               >
                 <div className="flex flex-col items-center">
-                  <div className="w-16 h-16 mb-4 group-hover:scale-110 transition-transform duration-300">
-                    {button.icon}
-                  </div>
-                  <h3 className="text-lg font-semibold mb-2">{button.label}</h3>
-                  <div className="w-8 h-0.5 bg-white/30 group-hover:bg-white/60 transition-colors duration-300"></div>
+                  <h3 className="text-lg font-semibold">{button.label}</h3>
                 </div>
                 <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
