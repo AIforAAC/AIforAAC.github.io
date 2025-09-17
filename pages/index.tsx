@@ -2,6 +2,83 @@ import React, { useState, useEffect } from 'react'
 import Head from 'next/head'
 import InteractivePrototypes from '../components/InteractivePrototypes'
 
+// Navigation Component
+const Navigation = ({ activeTab, setActiveTab }: { activeTab: string, setActiveTab: (tab: string) => void }) => {
+  const tabs = [
+    { id: 'home', label: 'Home' },
+    { id: 'about', label: 'About' },
+    { id: 'prototypes', label: 'Prototypes' },
+    { id: 'publications', label: 'Publications' },
+    { id: 'team', label: 'Team' },
+    { id: 'contact', label: 'Contact' }
+  ]
+
+  return (
+    <nav className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-40">
+      <div className="container-max">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo/Brand */}
+          <div className="flex-shrink-0">
+            <h1 className="text-xl font-bold text-primary-600">AAC AI Project</h1>
+          </div>
+          
+          {/* Navigation Tabs */}
+          <div className="hidden md:block">
+            <div className="ml-10 flex items-baseline space-x-4">
+              {tabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                    activeTab === tab.id
+                      ? 'bg-primary-100 text-primary-700'
+                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setActiveTab('mobile-menu')}
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
+            >
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile menu */}
+        {activeTab === 'mobile-menu' && (
+          <div className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
+              {tabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-colors ${
+                    activeTab === tab.id
+                      ? 'bg-primary-100 text-primary-700'
+                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </nav>
+  )
+}
+
 // Accessibility and UI Components
 const AccessibilityControls = () => {
   const [highContrast, setHighContrast] = useState(false)
@@ -93,6 +170,253 @@ const AccessibilityControls = () => {
           </div>
         </div>
       )}
+    </div>
+  )
+}
+
+// About Page Component
+const AboutPage = () => {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-cyan-50">
+      <div className="section-padding">
+        <div className="container-max">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                About AAC AI Project
+              </h1>
+              <p className="text-xl text-gray-700 leading-relaxed">
+                Empowering AAC users through innovative AI technology while preserving personal voice and user autonomy.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 mb-12">
+              <div className="card">
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4">Our Mission</h2>
+                <p className="text-gray-700 mb-4">
+                  To reduce communication effort for AAC users by leveraging modern AI technology, 
+                  while ensuring that personal voice, user control, and individual expression remain paramount.
+                </p>
+                <p className="text-gray-700">
+                  We believe that AI should enhance, not replace, the unique communication style of each AAC user.
+                </p>
+              </div>
+
+              <div className="card">
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4">Our Vision</h2>
+                <p className="text-gray-700 mb-4">
+                  A world where AAC users can communicate at the speed of thought, with AI assistance that 
+                  understands context, preserves personality, and respects user preferences.
+                </p>
+                <p className="text-gray-700">
+                  We envision communication tools that adapt to users, not the other way around.
+                </p>
+              </div>
+            </div>
+
+            <div className="card mb-8">
+              <h2 className="text-2xl font-semibold text-gray-900 mb-6">Project Goals</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h3 className="text-lg font-medium text-gray-900 mb-3">Reduce Communication Effort</h3>
+                  <ul className="space-y-2 text-gray-700">
+                    <li className="flex items-start">
+                      <span className="w-2 h-2 bg-primary-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      Transform short inputs into full responses
+                    </li>
+                    <li className="flex items-start">
+                      <span className="w-2 h-2 bg-primary-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      Provide context-aware suggestions
+                    </li>
+                    <li className="flex items-start">
+                      <span className="w-2 h-2 bg-primary-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      Enable faster message composition
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-lg font-medium text-gray-900 mb-3">Preserve User Autonomy</h3>
+                  <ul className="space-y-2 text-gray-700">
+                    <li className="flex items-start">
+                      <span className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      Maintain personal communication style
+                    </li>
+                    <li className="flex items-start">
+                      <span className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      Ensure all outputs are editable
+                    </li>
+                    <li className="flex items-start">
+                      <span className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      Respect privacy and data control
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// Team Page Component
+const TeamPage = () => {
+  const teamMembers = [
+    {
+      name: "Prof. Rohini Srihari",
+      role: "Principal Investigator",
+      description: "Leading research in AI and accessibility technologies"
+    },
+    {
+      name: "Sayantan Pal",
+      role: "Research Associate",
+      description: "Specializing in human-computer interaction and AAC systems"
+    },
+    {
+      name: "Nikhil Murali",
+      role: "Research Assistant",
+      description: "Focusing on AI implementation and user interface design"
+    },
+    {
+      name: "Atharva Jadhav",
+      role: "Research Assistant", 
+      description: "Working on accessibility features and user experience"
+    }
+  ]
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-cyan-50">
+      <div className="section-padding">
+        <div className="container-max">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Our Team
+              </h1>
+              <p className="text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto">
+                Meet the dedicated researchers and developers working to advance AAC technology through AI innovation.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+              {teamMembers.map((member, index) => (
+                <div key={index} className="card text-center">
+                  <div className="w-24 h-24 bg-gradient-to-br from-primary-100 to-primary-200 rounded-full mx-auto mb-4 flex items-center justify-center">
+                    <svg className="w-12 h-12 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{member.name}</h3>
+                  <p className="text-primary-600 font-medium mb-3">{member.role}</p>
+                  <p className="text-gray-600">{member.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// Publications Page Component
+const PublicationsPage = () => {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-rose-50">
+      <div className="section-padding">
+        <div className="container-max">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Previous Publications
+              </h1>
+              <p className="text-xl text-gray-700 leading-relaxed">
+                Research publications and contributions to the field of AAC and AI-assisted communication.
+              </p>
+            </div>
+
+            <div className="card mb-8">
+              <div className="text-center py-12">
+                <div className="w-16 h-16 bg-gray-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                  <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C20.832 18.477 19.246 18 17.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-medium text-gray-900 mb-2">Publications Coming Soon</h3>
+                <p className="text-gray-600 mb-6">
+                  We are currently preparing our research findings for publication. 
+                  Check back soon for updates on our latest contributions to the field.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="card">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">Research Areas</h3>
+                <ul className="space-y-2 text-gray-700">
+                  <li className="flex items-start">
+                    <span className="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    AI-assisted AAC communication
+                  </li>
+                  <li className="flex items-start">
+                    <span className="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    User-centered design for accessibility
+                  </li>
+                  <li className="flex items-start">
+                    <span className="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    Privacy-preserving language models
+                  </li>
+                </ul>
+              </div>
+
+              <div className="card">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">Collaboration</h3>
+                <p className="text-gray-700 mb-4">
+                  We actively collaborate with AAC users, caregivers, and accessibility researchers 
+                  to ensure our work has real-world impact and meets the needs of the community.
+                </p>
+                <p className="text-gray-700">
+                  Interested in collaborating? Reach out through our contact page.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// Prototypes Page Component  
+const PrototypesPage = () => {
+  return (
+    <div className="min-h-screen bg-white">
+      <div className="section-padding">
+        <div className="container-max">
+          <div className="max-w-4xl mx-auto mb-12">
+            <div className="text-center">
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Interactive Prototypes
+              </h1>
+              <p className="text-xl text-gray-700 leading-relaxed">
+                Experience our AI-assisted communication tools through these interactive demonstrations. 
+                All prototypes run locally in your browser - no data is sent to external servers.
+              </p>
+            </div>
+          </div>
+          <InteractivePrototypes />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// Contact Page Component
+const ContactPage = () => {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50">
+      <ContactSection />
     </div>
   )
 }
@@ -790,8 +1114,41 @@ const ContactSection = () => {
   )
 }
 
+// Home Page Content
+const HomePage = () => {
+  return (
+    <>
+      <HeroSection />
+      <ProblemSection />
+      <AIHelpSection />
+      <DesignGuidelinesSection />
+    </>
+  )
+}
+
 // Main Page Component
 export default function Home() {
+  const [activeTab, setActiveTab] = useState('home')
+
+  const renderPage = () => {
+    switch (activeTab) {
+      case 'home':
+        return <HomePage />
+      case 'about':
+        return <AboutPage />
+      case 'prototypes':
+        return <PrototypesPage />
+      case 'publications':
+        return <PublicationsPage />
+      case 'team':
+        return <TeamPage />
+      case 'contact':
+        return <ContactPage />
+      default:
+        return <HomePage />
+    }
+  }
+
   return (
     <div className="min-h-screen">
       <Head>
@@ -808,18 +1165,11 @@ export default function Home() {
       {/* Accessibility Controls */}
       <AccessibilityControls />
 
-      <main id="main-content">
-        <HeroSection />
-        <ProblemSection />
-        <AIHelpSection />
-        
-        <InteractivePrototypes />
-        
-        {/* Design Guidelines Section */}
-        <DesignGuidelinesSection />
+      {/* Navigation */}
+      <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
 
-        {/* Contact Section */}
-        <ContactSection />
+      <main id="main-content">
+        {renderPage()}
       </main>
 
       {/* Footer */}
