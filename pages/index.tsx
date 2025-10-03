@@ -10,6 +10,7 @@ const Navigation = ({ activeTab, setActiveTab }: { activeTab: string, setActiveT
     { id: 'prototypes', label: 'Prototypes' },
     { id: 'publications', label: 'Research' },
     { id: 'team', label: 'Team' },
+    { id: 'news', label: 'News' },
     { id: 'contact', label: 'Contact' }
   ]
 
@@ -512,6 +513,101 @@ const PrototypesPage = () => {
             </div>
           </div>
           <InteractivePrototypes />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// News Page Component
+const NewsPage = () => {
+  const newsItems = [
+    {
+      title: "Tapping the Power of Empire AI",
+      link: "https://www.buffalo.edu/home/how/articlehost.host.html/content/shared/www/eub/here-is-how/24-25/empire-ai.detail.html",
+      description: "UB kicks off efforts to help people with ALS, improve medical imaging, boost mental health resources and more through the Empire AI consortium.",
+      date: "March 2025"
+    },
+    {
+      title: "Governor Hochul Unveils Fifth Proposal of 2024 State of the State: Empire AI Consortium to Make New York the National Leader in AI Research and Innovation",
+      link: "https://www.governor.ny.gov/news/governor-hochul-unveils-fifth-proposal-2024-state-state-empire-ai-consortium-make-new-york",
+      description: "Over $400 Million in Public and Private Funding Committed to Create 'Empire AI' - Seven of New York's Leading Universities and Research Institutions Join Consortium to Promote Responsible Research and AI Opportunities Focused on Public Good.",
+      date: "January 8, 2024"
+    }
+  ]
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+      <div className="section-padding">
+        <div className="container-max">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                News & Updates
+              </h1>
+              <p className="text-xl text-gray-700 leading-relaxed">
+                Stay informed about the latest developments in Empire AI and our research initiatives.
+              </p>
+            </div>
+
+            {/* News Articles */}
+            <div className="space-y-8">
+              {newsItems.map((news, index) => (
+                <div key={index} className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-blue-100">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="w-10 h-10 bg-gradient-to-br from-blue-100 to-indigo-200 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                          </svg>
+                        </div>
+                        <span className="text-sm text-gray-500 font-medium">{news.date}</span>
+                      </div>
+                      <h3 className="text-2xl font-semibold text-gray-900 mb-3 group-hover:text-blue-700 transition-colors duration-300">
+                        {news.title}
+                      </h3>
+                      <p className="text-gray-700 mb-4 leading-relaxed">
+                        {news.description}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                    <a 
+                      href={news.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg hover:from-blue-600 hover:to-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg"
+                    >
+                      <span className="mr-2">Read Full Article</span>
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Additional Info Card */}
+            <div className="mt-12 bg-gradient-to-r from-indigo-50 to-blue-50 rounded-2xl p-8 border border-indigo-200">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-indigo-100 to-indigo-200 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <svg className="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">About Empire AI</h3>
+                  <p className="text-gray-700 leading-relaxed">
+                    The $400 million statewide consortium includes a supercomputing center located at UB, 
+                    a State University of New York flagship with decades of leadership in AI and data science. 
+                    Empire AI aims to harness AI for the betterment of society and drive innovation in New York State.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1245,6 +1341,8 @@ export default function Home() {
         return <PublicationsPage />
       case 'team':
         return <TeamPage />
+      case 'news':
+        return <NewsPage />
       case 'contact':
         return <ContactPage />
       default:
