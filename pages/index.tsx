@@ -20,7 +20,7 @@ const Navigation = ({ activeTab, setActiveTab }: { activeTab: string, setActiveT
         <div className="flex items-center justify-between h-16">
           {/* Logo/Brand */}
           <div className="flex-shrink-0 ml-4">
-            <h1 className="text-xl font-bold text-primary-600">AI for AAC</h1>
+            <h1 className="text-xl font-bold text-primary-600">University at Buffalo | AI for AAC</h1>
           </div>
           
           {/* Navigation Tabs */}
@@ -623,6 +623,140 @@ const ContactPage = () => {
   )
 }
 
+// Image Carousel Component
+const ImageCarousel = () => {
+  const [currentImage, setCurrentImage] = useState(0)
+  
+  const images = [
+    {
+      src: "/aac-site-img1.jpg",
+      alt: "Person using AAC communication device with AI assistance, showing empowerment through technology",
+      title: "AI-Powered Communication",
+      subtitle: "Preserving voice, enhancing speed",
+      link: null
+    },
+    {
+      src: "/empire-ai.jpg",
+      alt: "Empire AI consortium announcement with government officials",
+      title: "UB kicks off efforts to help people with ALS",
+      subtitle: "Empire AI consortium drives innovation",
+      link: "https://www.buffalo.edu/home/how/articlehost.host.html/content/shared/www/eub/here-is-how/24-25/empire-ai.detail.html"
+    }
+  ]
+
+  // Auto-transition every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % images.length)
+    }, 5000)
+    
+    return () => clearInterval(interval)
+  }, [images.length])
+
+  const nextImage = () => {
+    setCurrentImage((prev) => (prev + 1) % images.length)
+  }
+
+  const prevImage = () => {
+    setCurrentImage((prev) => (prev - 1 + images.length) % images.length)
+  }
+
+  const goToImage = (index: number) => {
+    setCurrentImage(index)
+  }
+
+  return (
+    <div className="relative">
+      <div className="relative rounded-3xl overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-500">
+        {/* Image Container */}
+        <div className="relative h-72 md:h-96 w-full max-w-2xl mx-auto">
+          {images.map((image, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-1000 ${
+                index === currentImage ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              <img 
+                src={image.src} 
+                alt={image.alt}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              
+              {/* Image Caption */}
+              <div className="absolute bottom-4 left-4 right-4">
+                <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4">
+                  {image.link ? (
+                    <a 
+                      href={image.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="block hover:bg-gray-50/50 rounded-lg transition-colors"
+                    >
+                      <p className="text-sm font-semibold text-gray-800 hover:text-blue-700">
+                        {image.title}
+                      </p>
+                      <p className="text-xs text-gray-600">{image.subtitle}</p>
+                    </a>
+                  ) : (
+                    <>
+                      <p className="text-sm font-semibold text-gray-800">{image.title}</p>
+                      <p className="text-xs text-gray-600">{image.subtitle}</p>
+                    </>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Navigation Arrows */}
+        <button
+          onClick={prevImage}
+          className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white/90 backdrop-blur-sm rounded-full p-3 shadow-lg transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          aria-label="Previous image"
+        >
+          <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        
+        <button
+          onClick={nextImage}
+          className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white/90 backdrop-blur-sm rounded-full p-3 shadow-lg transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          aria-label="Next image"
+        >
+          <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+
+        {/* Dot Indicators */}
+        <div className="absolute bottom-16 left-1/2 -translate-x-1/2 flex space-x-2">
+          {images.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToImage(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                index === currentImage 
+                  ? 'bg-white shadow-lg scale-110' 
+                  : 'bg-white/60 hover:bg-white/80'
+              }`}
+              aria-label={`Go to image ${index + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+      
+      {/* Floating decorative elements */}
+      <div className="absolute -top-4 -right-4 w-12 h-12 accent-warm rounded-2xl opacity-80 animate-pulse"></div>
+      <div className="absolute -bottom-4 -left-4 w-16 h-16 accent-success rounded-full opacity-60 animate-bounce"></div>
+      <div className="absolute top-1/2 -left-6 w-8 h-8 accent-secondary rounded-lg opacity-70"></div>
+    </div>
+  )
+}
+
 // Hero Section Component
 const HeroSection = ({ setActiveTab }: { setActiveTab?: (tab: string) => void }) => {
   const scrollToSection = (sectionId: string) => {
@@ -684,27 +818,7 @@ const HeroSection = ({ setActiveTab }: { setActiveTab?: (tab: string) => void })
           </div>
           
           {/* Image Column */}
-          <div className="relative">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-500">
-              <img 
-                src="/aac-site-img1.jpg" 
-                alt="Person using AAC communication device with AI assistance, showing empowerment through technology"
-                className="w-full h-auto object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-              <div className="absolute bottom-4 left-4 right-4">
-                <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4">
-                  <p className="text-sm font-semibold text-gray-800">AI-Powered Communication</p>
-                  <p className="text-xs text-gray-600">Preserving voice, enhancing speed</p>
-                </div>
-              </div>
-            </div>
-            
-            {/* Floating decorative elements */}
-            <div className="absolute -top-4 -right-4 w-12 h-12 accent-warm rounded-2xl opacity-80 animate-pulse"></div>
-            <div className="absolute -bottom-4 -left-4 w-16 h-16 accent-success rounded-full opacity-60 animate-bounce"></div>
-            <div className="absolute top-1/2 -left-6 w-8 h-8 accent-secondary rounded-lg opacity-70"></div>
-          </div>
+          <ImageCarousel />
         </div>
       </div>
     </section>
